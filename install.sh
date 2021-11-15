@@ -38,6 +38,12 @@ add_custom_git_config () {
   git config --global user.email "dev.santostiago@gmail.com"
 }
 
+install_mac_and_iterm_defaults () {
+  echo "Installing defaults"
+  source ./defaults/mac
+  source ./defaults/iterm2
+}
+
 main () {
    install_homebrew
    install_brew_dependencies
@@ -45,6 +51,7 @@ main () {
    install_zinit
    install_zinit_packages
    add_custom_git_config
+   install_mac_and_iterm_defaults
 }
 
 main "$@"

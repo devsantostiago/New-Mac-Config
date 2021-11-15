@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Dark theme and hide split pane titlebars.
+defaults write com.googlecode.iterm2 DimInactiveSplitPanes -bool true
+defaults write com.googlecode.iterm2 DimOnlyText -bool true
+defaults write com.googlecode.iterm2 ShowPaneTitles -bool false
+defaults write com.googlecode.iterm2 SplitPaneDimmingAmount -float 0.5
+defaults write com.googlecode.iterm2 TabStyle -int 1
+
+# Enable Session Restoration.
+defaults write com.googlecode.iterm2 KillJobsInServersOnQuit -bool false
+defaults write com.googlecode.iterm2 OnlyWhenMoreTabs -bool false
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
