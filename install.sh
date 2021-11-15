@@ -30,12 +30,21 @@ install_zinit_packages () {
   rcup -d "packages/zinit"
 }
 
+add_custom_git_config () {
+  echo "Adding custom gitconfig"
+  rcup -d "packages/git"
+  git config --global include.path "$PWD/git/gitconfig.local"
+  git config --global user.name "devsantostiago"
+  git config --global user.email "dev.santostiago@gmail.com"
+}
+
 main () {
    install_homebrew
    install_brew_dependencies
    install_oh_my_zsh
    install_zinit
    install_zinit_packages
+   add_custom_git_config
 }
 
 main "$@"

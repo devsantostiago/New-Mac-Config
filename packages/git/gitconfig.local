@@ -1,0 +1,43 @@
+[core]
+  excludesfile = $HOME/.gitignore
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+[user]
+  name = devsantostiago
+  email = dev.santostiago@gmail.com
+[commit]
+  template = $HOME/.stCommitMsg
+[alias]
+  graph = log --graph --oneline --decorate
+  nuke = !"f() { git restore --staged --worktree .; git clean -dfq; echo 'puffff';}; f"
+  rc = rebase --continue
+  rb = rebase
+  co = checkout
+  cm = commit -m
+  s = status
+  ad = add -A
+  pl = pull
+  f = push --force-with-lease
+  amend = commit --amend --no-edit
+[interactive]
+  diffFilter = diff-so-fancy --patch
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = 11
+  frag = magenta bold
+  func = 146 bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color]
+  ui = true

@@ -96,6 +96,15 @@ test_zshrc_is_configured () {
     fi
 }
 
+test_git_is_configured () {
+    if cmp --silent "$HOME/.gitconfig" "$PWD/tests/expected_git_config.txt"
+    then
+        print_test_result "Test git is configured" true
+    else
+        print_test_result "Test git is configured" false
+    fi
+}
+
 main() {
     #Header
     print_tests_header
@@ -106,6 +115,7 @@ main() {
     test_brew_utils_where_installed
     test_oh_my_zsh_is_installed
     test_zshrc_is_configured
+    test_git_is_configured
 
     #Result Report
     print_tests_result
