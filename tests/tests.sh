@@ -78,11 +78,26 @@ test_brew_utils_where_installed () {
     done < "$utilsInput"
 }
 
+test_oh_my_zsh_is_installed () {
+    if [ -f "$HOME/.zshrc" ]
+    then
+        print_test_result "Test oh-my-zshrc is installed" true
+    else
+        print_test_result "Test oh-my-zshrc is installed" false
+    fi
+}
+
 main() {
+    #Header
     print_tests_header
+
+    #Tests
     test_brew_is_installed
     test_brew_casks_where_installed
     test_brew_utils_where_installed
+    test_oh_my_zsh_is_installed
+
+    #Result Report
     print_tests_result
 }
 
