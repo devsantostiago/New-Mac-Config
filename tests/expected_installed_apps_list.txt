@@ -6,5 +6,3 @@ slack
 proxyman
 spotify
 notion
-Xcode
-

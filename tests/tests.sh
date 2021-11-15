@@ -105,6 +105,17 @@ test_git_is_configured () {
     fi
 }
 
+test_xcode_is_installed () {
+    found=$(mdfind -name Xcode.app | wc -l)
+
+    if [ $found = 0 ]
+    then
+        print_test_result "Test Xcode is instaled" false
+    else
+        print_test_result "Test Xcode is instaled" true
+    fi
+}
+
 main() {
     #Header
     print_tests_header
@@ -116,6 +127,7 @@ main() {
     test_oh_my_zsh_is_installed
     test_zshrc_is_configured
     test_git_is_configured
+    test_xcode_is_installed
 
     #Result Report
     print_tests_result

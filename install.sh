@@ -44,6 +44,11 @@ install_mac_and_iterm_defaults () {
   source ./defaults/iterm2
 }
 
+install_xcode () {
+  echo "Installing Xcode"
+  xcodes install --latest
+}
+
 main () {
    install_homebrew
    install_brew_dependencies
@@ -52,6 +57,7 @@ main () {
    install_zinit_packages
    add_custom_git_config
    install_mac_and_iterm_defaults
+   install_xcode
 }
 
 main "$@"
