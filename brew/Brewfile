@@ -1,0 +1,27 @@
+# Taps
+tap 'thoughtbot/formulae'
+tap 'robotsandpencils/made'
+
+# Utils
+brew 'dockutil'
+brew 'fasd'
+brew 'fzf'
+brew 'z'
+brew 'git'
+brew 'mas'
+brew 'n'
+brew 'rcm'
+brew 'trash'
+brew 'diff-so-fancy'
+brew 'robotsandpencils/made/xcodes'
+brew 'thefuck'
+brew 'shellcheck'
+
+# Casks
+cask 'iterm2'
+cask 'visual-studio-code'
+cask 'slack'
+cask 'proxyman'
+cask 'spotify'
+cask 'notion'
+cask 'caffeine'
