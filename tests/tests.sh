@@ -87,6 +87,15 @@ test_oh_my_zsh_is_installed () {
     fi
 }
 
+test_zshrc_is_configured () {
+    if cmp --silent "$HOME/.zshrc" "./packages/zinit/zshrc"
+    then
+        print_test_result "Test zshrc is configured" true
+    else
+        print_test_result "Test zshrc is configured" false
+    fi
+}
+
 main() {
     #Header
     print_tests_header
@@ -96,6 +105,7 @@ main() {
     test_brew_casks_where_installed
     test_brew_utils_where_installed
     test_oh_my_zsh_is_installed
+    test_zshrc_is_configured
 
     #Result Report
     print_tests_result

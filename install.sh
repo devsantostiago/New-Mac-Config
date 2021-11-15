@@ -18,10 +18,24 @@ install_oh_my_zsh () {
   fi
 }
 
+install_zinit () {
+  echo "Installing Zinit"
+  if [ ! "$commmand" -v zinit ]; then
+    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
+  fi
+}
+
+install_zinit_packages () {
+  echo "Installing zinit packages"
+  rcup -d "packages/zinit"
+}
+
 main () {
    install_homebrew
    install_brew_dependencies
    install_oh_my_zsh
+   install_zinit
+   install_zinit_packages
 }
 
 main "$@"

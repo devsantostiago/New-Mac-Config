@@ -1,0 +1,80 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Zinit startup
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Source local zsh configs
+if [[ -s "${HOME}/.zshrc.local" ]]; then
+  source "${HOME}/.zshrc.local"
+fi
+
+# Setup Zsh cache (needed for fzf)
+export ZSH_CACHE_DIR="${TMPDIR:-/tmp}"
+
+# Setup extra paths
+export PATH=$PATH:$HOME/Library/Python/3.7/bin
+export PATH=$PATH:$HOME/.bin
+export PATH=$PATH:./node_modules/.bin
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# Theme
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit light romkatv/powerlevel10k
+
+# Modules
+zinit ice wait"0" lucid multisrc"shell/{completion,key-bindings}.zsh"
+zinit light "junegunn/fzf"
+
+zinit ice wait"0" lucid atload"_zsh_autosuggest_start"
+zinit light "zsh-users/zsh-autosuggestions"
+
+zinit ice wait"0" lucid blockf
+zinit light "zsh-users/zsh-completions"
+
+zinit ice wait"0" lucid src"autopair.zsh"
+zinit light "hlissner/zsh-autopair"
+
+zinit ice wait"0" lucid
+zinit light 'djui/alias-tips'
+
+# Snippets
+zinit ice wait"0" lucid
+zinit snippet "OMZ::plugins/fasd/fasd.plugin.zsh"
+
+zinit ice wait"0" lucid
+zinit snippet "OMZ::plugins/kubectl/kubectl.plugin.zsh"
+
+zinit ice wait"0" lucid
+zinit snippet "https://github.com/zimfw/completion/blob/master/init.zsh"
+
+zinit ice wait"0" lucid
+zinit snippet "https://github.com/superbrothers/zsh-kubectl-prompt/raw/master/kubectl.zsh"
+
+zinit ice wait"0" lucid
+zinit snippet "https://github.com/zimfw/input/blob/master/init.zsh"
+
+zinit ice wait"0" lucid
+zinit snippet "https://github.com/zimfw/utility/blob/master/init.zsh"
+
+zinit ice wait"0" lucid
+zinit snippet "https://github.com/thoughtbot/dotfiles/raw/master/zsh/functions/g"
+
+zinit snippet "OMZ::lib/history.zsh"
+
+# According to `fast-syntax-highlighting` documentation, it MUST be sourced last
+zinit ice wait"0" lucid atinit"zpcompinit; zpcdreplay"
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Aliases
+alias diff="git diff . | diff-so-fancy"
+eval $(thefuck --alias)
