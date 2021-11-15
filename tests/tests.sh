@@ -6,7 +6,7 @@ numberOfTestsPassed=0
 export bold=$(tput bold)
 export normal=$(tput sgr0)
 
-#Helper Function
+#Helper Functions
 print_test_result () {
     RED='\033[0;31m'
     GREEN='\033[0;32m'

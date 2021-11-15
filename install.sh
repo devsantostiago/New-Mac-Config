@@ -59,6 +59,23 @@ generate_ssh_key () {
   fi
 }
 
+launch_tests () {
+  /bin/sh $PWD/tests/tests.sh
+}
+
+print_manual_configs_reminder () {
+  export bold=$(tput bold)
+  export normal=$(tput sgr0)
+
+  echo "---------------------------------------------
+    DONE - Now you just need to:
+      ${bold}•  Change color presset to smooooooth
+      •  Add infinite scroll
+      •  Reboot to apply all changes
+      ${normal}
+  ---------------------------------------------"
+}
+
 main () {
    install_homebrew
    install_brew_dependencies
@@ -69,6 +86,8 @@ main () {
    install_mac_and_iterm_defaults
    install_xcode
    generate_ssh_key
+   launch_tests
+   print_manual_configs_reminder
 }
 
 main "$@"
