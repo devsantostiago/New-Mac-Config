@@ -49,6 +49,16 @@ install_xcode () {
   xcodes install --latest
 }
 
+generate_ssh_key () {
+  if [ -f "$HOME/.ssh/id_rsa.pub" ]
+  then
+    echo "Key ssh already created"
+  else 
+    echo "Generating ssh key"
+    ssh-keygen -q -t rsa -N "$0" -f $HOME/.ssh/id_rsa <<<y >/dev/null 2>&1
+  fi
+}
+
 main () {
    install_homebrew
    install_brew_dependencies
@@ -58,6 +68,7 @@ main () {
    add_custom_git_config
    install_mac_and_iterm_defaults
    install_xcode
+   generate_ssh_key
 }
 
 main "$@"
