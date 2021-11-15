@@ -1,0 +1,10 @@
+caffeine
+Safari
+iTerm
+visual-studio-code
+slack
+proxyman
+spotify
+notion
+Xcode
+

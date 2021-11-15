@@ -1,0 +1,13 @@
+dockutil
+fasd
+fzf
+z
+git
+mas
+n
+rcm
+trash
+diff-so-fancy
+robotsandpencils/made/xcodes
+thefuck
+shellcheck
