@@ -1,0 +1,16 @@
+on: workflow_dispatch
+
+name: Run install script
+
+jobs:
+  shell_test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run install script
+        shell: bash
+        env:
+          install_xcode: false
+        run: |
+            printenv | grep install
+            chmod +x ./install.sh && ./install.sh foo | tee

@@ -48,8 +48,13 @@ install_mac_and_iterm_defaults () {
 }
 
 install_xcode () {
-  echo "Installing Xcode"
-  xcodes install --latest
+  if [ $install_xcode = false ]
+  then
+    echo "Installing Xcode - Skipped"
+  else
+    echo "Installing Xcode"
+    xcodes install --latest
+  fi
 }
 
 generate_ssh_key () {
