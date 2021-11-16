@@ -1,0 +1,13 @@
+on: workflow_dispatch
+
+name: Test that tests do fail
+
+jobs:
+  shell_test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Validate that initally all the tests do fail
+        shell: bash
+        run: |
+           chmod +x ./tests/tests.sh && ./tests/tests.sh | tee
