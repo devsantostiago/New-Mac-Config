@@ -51,9 +51,7 @@ test_brew_casks_where_installed () {
 
     while IFS= read -r line
     do
-        #Remove "-" from app name
-        appName=$(echo $line | tr - ' ')
-        found=$(mdfind -name $appName.app | wc -l)
+        found=$(mdfind -name $line.app | wc -l)
 
         if [ $found = 0 ]
         then
