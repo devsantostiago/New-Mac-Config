@@ -55,9 +55,9 @@ test_brew_casks_where_installed () {
 
         if [ $found = 0 ]
         then
-            print_test_result "Test $appName is instaled" false
+            print_test_result "Test $line is instaled" false
         else
-            print_test_result "Test $appName is instaled" true
+            print_test_result "Test $line is instaled" true
         fi
     done < $appInput
 }
