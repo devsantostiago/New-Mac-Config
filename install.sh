@@ -62,8 +62,11 @@ generate_ssh_key () {
   then
     echo "Key ssh already created"
   else 
-    echo "Generating ssh key"
+    echo "Generating and configuring ssh key"
     ssh-keygen -q -t rsa -N "$0" -f $HOME/.ssh/id_rsa <<<y >/dev/null 2>&1
+    #Setup ssh config
+    cp $PWD/packages/git/config $HOME/.ssh/config
+    chmod 0644 $HOME/.ssh/config
   fi
 }
 
