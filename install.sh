@@ -17,7 +17,7 @@ install_oh_my_zsh () {
   echo "Installing oh-my-zsh"
   if [ ! -d "$HOME/.zshrc" ]
   then
-    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
   fi
 }
 
@@ -71,7 +71,8 @@ generate_ssh_key () {
 }
 
 launch_tests () {
-  /bin/sh $PWD/tests/tests.sh
+  chmod +x $PWD/tests/tests.sh
+  /bin/sh -c $PWD/tests/tests.sh
 }
 
 print_manual_configs_reminder () {
