@@ -6,6 +6,8 @@ set -o pipefail
 install_homebrew () {
   echo "Installing Homebrew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+  source ~/.zprofile
 }
 
 install_brew_dependencies () {
@@ -24,7 +26,7 @@ install_oh_my_zsh () {
 install_zinit () {
   echo "Installing Zinit"
   if [ ! "$commmand" -v zinit ]; then
-    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
+    /bin/sh -c "$(curl -fsSL https://git.io/zinit-install)"
   fi
 }
 
@@ -72,7 +74,7 @@ generate_ssh_key () {
 
 launch_tests () {
   chmod +x $PWD/tests/tests.sh
-  /bin/sh -c $PWD/tests/tests.sh
+  /bin/sh $PWD/tests/tests.sh
 }
 
 print_manual_configs_reminder () {
