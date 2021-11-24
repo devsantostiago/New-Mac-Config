@@ -12,5 +12,4 @@ jobs:
         env:
           install_xcode: false
         run: |
-            printenv | grep install
             chmod +x ./install.sh && ./install.sh foo | tee
