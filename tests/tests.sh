@@ -51,9 +51,9 @@ test_brew_casks_where_installed () {
 
     while IFS= read -r line
     do
-        found=$(mdfind -name $line.app | wc -l)
+        outputLinesCount=$(mdfind -name $line.app | wc -l)
 
-        if [ $found = 0 ]
+        if [ $outputLinesCount = 0 ]
         then
             print_test_result "Test $line is instaled" false
         else
